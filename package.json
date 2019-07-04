@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.5.1",
-    "ffmpeg-binaries": "^4.0.0",
     "node-opus": "^0.3.2"
   }
 }
