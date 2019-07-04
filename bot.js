@@ -29,7 +29,7 @@ client.on('message', async message => {
     if (command === "uza") {
         //voiceChannel = message.member.voiceChannel;
         if (message.guild.me.voiceChannel !== undefined) {
-            await connection.playFile('./audio/gul.ogg');
+            await message.guild.me.voiceChannel.playFile('./audio/gul.ogg');
             message.guild.me.voiceChannel.leave();
         } else {
             message.reply("sebeb ?");
