@@ -34,7 +34,7 @@ client.on('message', async message => {
         if (message.guild.me.voiceChannel.id === message.member.voiceChannel.id) {
             console.log(connection);
             await message.member.voiceChannel.connection.playFile('./audio/gul.ogg');
-            await message.member.voiceChannel.leave();
+            //await message.member.voiceChannel.leave();
         } else {
             await message.channel.send('sebeb ?');
         }
