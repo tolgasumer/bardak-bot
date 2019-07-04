@@ -28,11 +28,11 @@ client.on('message', async message => {
     }
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
-        console.log(message.guild.me.voiceChannel);
-        console.log(message.member.voiceChannel);
-        if (message.guild.me.voiceChannel === message.member.voiceChannel) {
-            await message.guild.me.voiceChannel.playFile('./audio/gul.ogg');
-            await message.guild.me.voiceChannel.leave();
+        console.log(message.guild.me.voiceChannel.id);
+        console.log(message.member.voiceChannel.id);
+        if (message.guild.me.voiceChannel.id === message.member.voiceChannel.id) {
+            await message.member.voiceChannel.playFile('./audio/gul.ogg');
+            await message.member.voiceChannel.leave();
         } else {
             await message.channel.send('sebeb ?');
         }
