@@ -24,7 +24,7 @@ client.on('message', async message => {
         message.channel.send('sa');
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/sa.mp3');
+        await connection.playFile('./audio/sa.ogg');
     }
     if (command === "uza") {
         message.channel.send('sebeb ?');
