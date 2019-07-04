@@ -27,8 +27,8 @@ client.on('message', async message => {
         await connection.playFile('./audio/sa.ogg');
     }
     if (command === "uza") {
-        //voiceChannel = message.member.voiceChannel;
-        if (message.guild.me.voiceChannel) {
+        voiceChannel = message.member.voiceChannel;
+        if (message.guild.me.voiceChannel === message.member.voiceChannel) {
             await message.guild.me.voiceChannel.playFile('./audio/gul.ogg');
             message.guild.me.voiceChannel.leave();
         } else {
