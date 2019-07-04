@@ -27,12 +27,14 @@ client.on('message', async message => {
         await connection.playFile('./audio/sa.ogg');
     }
     if (command === "uza") {
-        voiceChannel = message.member.voiceChannel;
+        voiceChannel = await message.member.voiceChannel;
+        console.log(message.guild.me.voiceChannel);
+        console.log(message.member.voiceChannel);
         if (message.guild.me.voiceChannel === message.member.voiceChannel) {
             await message.guild.me.voiceChannel.playFile('./audio/gul.ogg');
-            message.guild.me.voiceChannel.leave();
+            await message.guild.me.voiceChannel.leave();
         } else {
-            message.channel.send('sebeb ?');
+            await message.channel.send('sebeb ?');
         }
         //connection = await voiceChannel.join();
         //await connection.leave();
