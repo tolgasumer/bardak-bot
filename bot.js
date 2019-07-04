@@ -27,6 +27,12 @@ client.on('message', async message => {
         await connection.playFile('./audio/sa.mp3');
         await connection.playFile('./audio/gul.ogg');
     }
+    if (command === "uza") {
+        message.channel.send('sebeb ?');
+        voiceChannel = message.member.voiceChannel;
+        await connection.playFile('./audio/gul.ogg');
+        connection = await voiceChannel.leave();  
+    }
 });
 
 client.login(config.token);
