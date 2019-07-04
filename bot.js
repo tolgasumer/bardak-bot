@@ -32,7 +32,7 @@ client.on('message', async message => {
             await message.guild.me.voiceChannel.playFile('./audio/gul.ogg');
             message.guild.me.voiceChannel.leave();
         } else {
-            message.reply("sebeb ?");
+            message.channel.send('sebeb ?');
         }
         //connection = await voiceChannel.join();
         //await connection.leave();
