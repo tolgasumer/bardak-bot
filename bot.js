@@ -60,7 +60,7 @@ async function baskinYap(voiceChannel) {
     });
 }
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
-    if (!user.bot) {
+    if (!newMember.user.bot) {
         randomInt = await getRandomInt(10 * 1000, 360 * 1000);
         setTimeout(baskinYap, randomInt, newMember.voiceChannel);
     }
