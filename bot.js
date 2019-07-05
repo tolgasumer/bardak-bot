@@ -49,11 +49,10 @@ client.on('message', async message => {
 
 async function baskinYap(voiceChannel) {
     connection = await voiceChannel.join();
-    await connection.playFile('./audio/sa.ogg');
-
+    await connection.playFile('./audio/gul.ogg');
 }
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
-    setTimeout(baskinYap(newMember.voiceChannel), 10000);
+    setTimeout(baskinYap, 10000, newMember.voiceChannel);
     console.log(`a user changes voice state`);
 });
 
