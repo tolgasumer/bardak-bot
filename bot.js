@@ -33,9 +33,6 @@ client.on('message', async message => {
     }
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
-        console.log(message.guild.me.voiceChannel.id);
-        console.log(message.member.voiceChannel.id);
-        console.log(message.member.voiceChannel.connection)
         if (message.guild.me.voiceChannel.id === message.member.voiceChannel.id) {
             console.log(connection);
             let dispatcher = message.member.voiceChannel.connection.playFile('./audio/gul.ogg');
@@ -50,5 +47,12 @@ client.on('message', async message => {
         //await connection.leave();
     }
 });
+
+client.on("voiceStateUpdate", function(oldMember, newMember){
+    console.log(oldMember);
+    console.log(newMember);
+    console.log(`a user changes voice state`);
+});
+
 
 client.login(config.token);
