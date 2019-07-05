@@ -47,13 +47,13 @@ client.on('message', async message => {
     }
 });
 
-client.on("voiceStateUpdate", async function (oldMember, newMember) {
-    //console.log(oldMember);
-    //console.log(newMember.voiceChannelID);
-    console.log(newMember.guild.channels);
-    voiceChannel = newMember.voiceChannel;
+async function baskinYap(voiceChannel) {
     connection = await voiceChannel.join();
     await connection.playFile('./audio/sa.ogg');
+
+}
+client.on("voiceStateUpdate", async function (oldMember, newMember) {
+    setTimeout(baskinYap(newMember.voiceChannel), 10000);
     console.log(`a user changes voice state`);
 });
 
