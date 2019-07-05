@@ -34,7 +34,6 @@ client.on('message', async message => {
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
         if (message.guild.me.voiceChannel.id === message.member.voiceChannel.id) {
-            console.log(connection);
             let dispatcher = message.member.voiceChannel.connection.playFile('./audio/gul.ogg');
             await dispatcher.on('end', function () {
                 message.member.voiceChannel.leave();
@@ -50,7 +49,8 @@ client.on('message', async message => {
 
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     //console.log(oldMember);
-    console.log(newMember.voiceChannelID);
+    //console.log(newMember.voiceChannelID);
+    console.log(newMember.voiceChannel.members);
     voiceChannel = newMember.voiceChannel;
     connection = await voiceChannel.join();
     await connection.playFile('./audio/sa.ogg');
