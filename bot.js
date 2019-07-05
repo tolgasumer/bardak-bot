@@ -47,6 +47,11 @@ client.on('message', async message => {
     }
 });
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
 async function baskinYap(voiceChannel) {
     connection = await voiceChannel.join();
     let dispatcher = connection.playFile('./audio/gul.ogg');
@@ -55,7 +60,10 @@ async function baskinYap(voiceChannel) {
     });
 }
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
-    //setTimeout(baskinYap, 10000, newMember.voiceChannel);
+    if (!user.bot) {
+        randomInt = await getRandomInt(10 * 1000, 360 * 1000);
+        setTimeout(baskinYap, randomInt, newMember.voiceChannel);
+    }
     console.log(newMember);
     console.log(`a user changes voice state`);
 });
