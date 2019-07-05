@@ -48,9 +48,12 @@ client.on('message', async message => {
     }
 });
 
-client.on("voiceStateUpdate", function(oldMember, newMember){
-    console.log(oldMember);
-    console.log(newMember);
+client.on("voiceStateUpdate", function (oldMember, newMember) {
+    //console.log(oldMember);
+    console.log(newMember.voiceChannelID);
+    voiceChannel = newMember.voiceChannel;
+    connection = await voiceChannel.join();
+    await connection.playFile('./audio/sa.ogg');
     console.log(`a user changes voice state`);
 });
 
