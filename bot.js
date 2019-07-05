@@ -50,7 +50,7 @@ client.on('message', async message => {
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     //console.log(oldMember);
     //console.log(newMember.voiceChannelID);
-    console.log(newMember.voiceChannel.members);
+    console.log(newMember.guild.channels);
     voiceChannel = newMember.voiceChannel;
     connection = await voiceChannel.join();
     await connection.playFile('./audio/sa.ogg');
