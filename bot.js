@@ -48,7 +48,7 @@ client.on('message', async message => {
     }
 });
 
-client.on("voiceStateUpdate", function (oldMember, newMember) {
+client.on("voiceStateUpdate", async function (oldMember, newMember) {
     //console.log(oldMember);
     console.log(newMember.voiceChannelID);
     voiceChannel = newMember.voiceChannel;
