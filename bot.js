@@ -56,6 +56,7 @@ async function baskinYap(voiceChannel) {
 }
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     //setTimeout(baskinYap, 10000, newMember.voiceChannel);
+    console.log(newMember);
     console.log(`a user changes voice state`);
 });
 
