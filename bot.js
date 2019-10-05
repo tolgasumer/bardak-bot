@@ -31,6 +31,11 @@ client.on('message', async message => {
         connection = await voiceChannel.join();
         await connection.playFile('./audio/harman.mp3');
     }
+    if (command === "alinir") {
+        voiceChannel = message.member.voiceChannel;
+        connection = await voiceChannel.join();
+        await connection.playFile('./audio/alinircubuklu.mp3');
+    }
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
         if (message.guild.me.voiceChannel.id === message.member.voiceChannel.id) {
