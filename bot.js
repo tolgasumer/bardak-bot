@@ -64,10 +64,14 @@ async function baskinYap(voiceChannel) {
     connection = await voiceChannel.join();
     let dispatcher = connection.playFile('./audio/bamboozle.ogg');
     await dispatcher.on('end', async function () {
-        let dispatcher1 = connection.playFile('./audio/gul.ogg');
+        let dispatcher1 = connection.playFile('./audio/zurna.ogg');
         await dispatcher1.on('end', function () {
-            voiceChannel.leave();
+            let dispatcher2 = connection.playFile('./audio/gul.ogg');
+            await dispatcher2.on('end', function () {
+                voiceChannel.leave();
+            });
         });
+
     });
 
 }
