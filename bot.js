@@ -76,9 +76,10 @@ client.on('message', async message => {
     if (command === "uza") {
         //voiceChannel = await message.member.voice.channel;
         if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
-            let dispatcher = message.member.voice.channel.connection.play('./audio/gul.ogg');
+            const connection = await message.member.voice.channel.join();
+            let dispatcher = connection.play('./audio/gul.ogg');
             await dispatcher.on('end', function () {
-                message.member.voice.channel.disconnect();
+                connection._disconnect();
             });
             //await message.member.voiceChannel.leave();
         } else {
