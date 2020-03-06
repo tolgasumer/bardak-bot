@@ -67,12 +67,18 @@ client.on('message', async message => {
             await connection.play('./audio/sg.ogg');
         }
     }
+    if (command === "adam") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/adam.ogg');
+        }
+    }
     if (command === "uza") {
-        voiceChannel = await message.member.voiceChannel;
-        if (message.guild.me.voiceChannel.id === message.member.voiceChannel.id) {
-            let dispatcher = message.member.voiceChannel.connection.playFile('./audio/gul.ogg');
+        //voiceChannel = await message.member.voice.channel;
+        if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
+            let dispatcher = message.member.voice.channel.connection.play('./audio/gul.ogg');
             await dispatcher.on('end', function () {
-                message.member.voiceChannel.leave();
+                message.member.voice.channel.leave();
             });
             //await message.member.voiceChannel.leave();
         } else {
