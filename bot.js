@@ -26,39 +26,46 @@ client.on('message', async message => {
         }
     }
     if (command === "harman") {
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/harman.mp3');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/harman.mp3');
+        }
     }
     if (command === "alinir") {
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/alinircubuklu.mp3');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/alinircubuklu.mp3');
+        }
     }
     if (command === "zurna") {
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/zurna.ogg');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/zurna.ogg');
+        }
     }
     if (command === "anani") {
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/anani.ogg');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/anani.ogg');
+        }
     }
     if (command === "hg") {
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/hg.ogg');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/hg.ogg');
+        }
     }
     if (command === "mal") {
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/mal.ogg');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/mal.ogg');
+        }
     }
     if (command === "sg") {
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/sg.ogg');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/sg.ogg');
+        }
     }
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
