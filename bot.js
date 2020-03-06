@@ -78,7 +78,7 @@ client.on('message', async message => {
         if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
             let dispatcher = message.member.voice.channel.connection.play('./audio/gul.ogg');
             await dispatcher.on('end', function () {
-                message.member.voice.channel.leave();
+                message.member.voice.channel.disconnect();
             });
             //await message.member.voiceChannel.leave();
         } else {
