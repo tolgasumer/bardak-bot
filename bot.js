@@ -22,37 +22,42 @@ client.on('message', async message => {
         message.channel.send('sa');
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/sa.ogg');
+        await connection.play('./audio/sa.ogg');
     }
     if (command === "harman") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/harman.mp3');
+        await connection.play('./audio/harman.mp3');
     }
     if (command === "alinir") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/alinircubuklu.mp3');
+        await connection.play('./audio/alinircubuklu.mp3');
     }
     if (command === "zurna") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/zurna.ogg');
+        await connection.play('./audio/zurna.ogg');
     }
     if (command === "anani") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/anani.ogg');
+        await connection.play('./audio/anani.ogg');
     }
     if (command === "hg") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/hg.ogg');
+        await connection.play('./audio/hg.ogg');
     }
     if (command === "mal") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/mal.ogg');
+        await connection.play('./audio/mal.ogg');
+    }
+    if (command === "sg") {
+        voiceChannel = message.member.voiceChannel;
+        connection = await voiceChannel.join();
+        await connection.play('./audio/sg.ogg');
     }
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
@@ -77,11 +82,11 @@ function getRandomInt(min, max) {
 }
 async function baskinYap(voiceChannel) {
     connection = await voiceChannel.join();
-    let dispatcher = connection.playFile('./audio/bamboozle.ogg');
+    let dispatcher = connection.play('./audio/bamboozle.ogg');
     await dispatcher.on('end', async function () {
-        let dispatcher1 = connection.playFile('./audio/zurna.ogg');
+        let dispatcher1 = connection.play('./audio/zurna.ogg');
         await dispatcher1.on('end', async function () {
-            let dispatcher2 = connection.playFile('./audio/gul.ogg');
+            let dispatcher2 = connection.play('./audio/gul.ogg');
             await dispatcher2.on('end', function () {
                 voiceChannel.leave();
             });
