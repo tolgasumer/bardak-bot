@@ -34,7 +34,7 @@ client.on('message', async message => {
         connection = await voiceChannel.join();
         await connection.playFile('./audio/alinircubuklu.mp3');
     }
-    if (command === "alinir") {
+    if (command === "zurna") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
         await connection.playFile('./audio/zurna.ogg');
