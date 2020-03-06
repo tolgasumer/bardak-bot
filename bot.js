@@ -19,10 +19,11 @@ client.on('message', async message => {
     }
 
     if (command === "gel") {
-        message.channel.send('sa');
-        voiceChannel = message.member.voiceChannel;
-        connection = await voiceChannel.join();
-        await connection.play('./audio/sa.ogg');
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            message.channel.send('sa');
+            await connection.play('./audio/sa.ogg');
+        }
     }
     if (command === "harman") {
         voiceChannel = message.member.voiceChannel;
