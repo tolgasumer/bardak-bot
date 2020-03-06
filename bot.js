@@ -49,6 +49,11 @@ client.on('message', async message => {
         connection = await voiceChannel.join();
         await connection.playFile('./audio/hg.ogg');
     }
+    if (command === "mal") {
+        voiceChannel = message.member.voiceChannel;
+        connection = await voiceChannel.join();
+        await connection.playFile('./audio/mal.ogg');
+    }
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
         if (message.guild.me.voiceChannel.id === message.member.voiceChannel.id) {
