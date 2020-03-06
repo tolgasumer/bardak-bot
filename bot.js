@@ -79,7 +79,7 @@ client.on('message', async message => {
             const connection = await message.member.voice.channel.join();
             let dispatcher = connection.play('./audio/gul.ogg');
             await dispatcher.on('end', function () {
-                connection.disconnect();
+                message.guild.me.voice.channel.leave();
             });
             //await message.member.voiceChannel.leave();
         } else {
