@@ -57,11 +57,14 @@ function getRandomInt(min, max) {
 }
 async function baskinYap(voiceChannel) {
     connection = await voiceChannel.join();
-    let dispatcher = connection.playFile('./audio/gul.ogg');
     let dispatcher = connection.playFile('./audio/bamboozle.ogg');
     await dispatcher.on('end', function () {
-        voiceChannel.leave();
+        let dispatcher1 = connection.playFile('./audio/gul.ogg');
+        await dispatcher1.on('end', function () {
+            voiceChannel.leave();
+        });
     });
+
 }
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     if (!newMember.user.bot) {
