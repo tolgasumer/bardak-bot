@@ -109,6 +109,7 @@ async function baskinYap(voiceChannel) {
     });
 
 }
+/*
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     if (!newMember.user.bot) {
         randomInt = await getRandomInt(10 * 1000, 360 * 1000);
@@ -117,6 +118,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     console.log(newMember);
     console.log(`a user changes voice state`);
 });
+*/
 
 
 client.login(config.token);
