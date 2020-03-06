@@ -37,7 +37,7 @@ client.on('message', async message => {
     if (command === "alinir") {
         voiceChannel = message.member.voiceChannel;
         connection = await voiceChannel.join();
-        await connection.playFile('./audio/zurna.wav');
+        await connection.playFile('./audio/zurna.ogg');
     }
     if (command === "uza") {
         voiceChannel = await message.member.voiceChannel;
