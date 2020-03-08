@@ -161,4 +161,4 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
 });
 
 
-client.login(config.token);
+client.login(process.env.TOKEN);
