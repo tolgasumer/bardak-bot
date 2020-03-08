@@ -132,7 +132,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     let newUserChannel = newMember.member.voice.channel;
     let oldUserChannel = oldMember.member.voice.channel;
 
-    console.log("voiceStateUpdate");
+    console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
 
 
     if (oldUserChannel === undefined && newUserChannel !== undefined) {
