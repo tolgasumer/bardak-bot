@@ -97,7 +97,7 @@ client.on('message', async message => {
             const connection = await message.member.voice.channel.join();
             let dispatcher = connection.play('./audio/gul.ogg');
             await dispatcher.on('end', function () {
-                message.guild.me.voice.channel.leave();
+                message.member.voice.channel.leave();
             });
             //await message.member.voiceChannel.leave();
         } else {
@@ -128,16 +128,25 @@ async function baskinYap(voiceChannel) {
     });
 
 }
-/*
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
-    if (!newMember.user.bot) {
-        randomInt = await getRandomInt(10 * 1000, 360 * 1000);
-        setTimeout(baskinYap, randomInt, newMember.voiceChannel);
+    let newUserChannel = newMember.voice.channel
+    let oldUserChannel = oldMember.voiceChannel
+
+
+    if (oldUserChannel === undefined && newUserChannel !== undefined) {
+        const connection = await message.member.voice.channel.join();
+        await connection.play('./audio/gg.mp3');
+
+        // User Joins a voice channel
+
+    } else if (newUserChannel === undefined) {
+        const connection = await message.member.voice.channel.join();
+        await connection.play('./audio/sg.ogg');
+
+        // User leaves a voice channel
+
     }
-    console.log(newMember);
-    console.log(`a user changes voice state`);
 });
-*/
 
 
 client.login(config.token);
