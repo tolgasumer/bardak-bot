@@ -134,10 +134,13 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
 
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
 
+    const connection = await newUserChannel.join();
+    await connection.play('./audio/hg.ogg');
 
+    /*
     if (oldUserChannel === undefined && newUserChannel !== undefined) {
         const connection = await newUserChannel.join();
-        await connection.play('./audio/gg.mp3');
+        await connection.play('./audio/hg.ogg');
 
         // User Joins a voice channel
 
@@ -148,6 +151,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
         // User leaves a voice channel
 
     }
+    */
 });
 
 
