@@ -132,6 +132,8 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     let newUserChannel = newMember.member.voice.channel;
     let oldUserChannel = oldMember.member.voice.channel;
 
+    console.log("voiceStateUpdate");
+
 
     if (oldUserChannel === undefined && newUserChannel !== undefined) {
         const connection = await newUserChannel.join();
