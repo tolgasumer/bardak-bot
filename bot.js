@@ -130,7 +130,7 @@ async function baskinYap(voiceChannel) {
 }
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     let newUserChannel = newMember.voice.channel
-    let oldUserChannel = oldMember.voiceChannel
+    let oldUserChannel = oldMember.voice.channel
 
 
     if (oldUserChannel === undefined && newUserChannel !== undefined) {
