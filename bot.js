@@ -149,21 +149,13 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     const connection = await newUserChannel.join();
     await connection.play('./audio/hg.ogg');
 
-    /*
-    if (oldUserChannel === undefined && newUserChannel !== undefined) {
-        const connection = await newUserChannel.join();
-        await connection.play('./audio/hg.ogg');
-
-        // User Joins a voice channel
-
-    } else if (newUserChannel === undefined) {
-        const connection = await oldUserChannel.join();
-        await connection.play('./audio/sg.ogg');
-
-        // User leaves a voice channel
-
-    }
-    */
+    // Send message to the first channel the bot is allowed to send to
+    guild.channels.sort(function(chan1,chan2){
+        if(chan1.type!==`text`) return 1;
+        if(!chan1.permissionsFor(guild.me).has(`SEND_MESSAGES`)) return -1;
+        return chan1.position < chan2.position ? -1 : 1;
+    }).first().send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
+    
 });
 
 
