@@ -170,7 +170,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     // Send message to the first channel the bot is allowed to send to
     console.log("newMember.guild.channels:", newMember.guild.channels);
     const channel = getDefaultChannel(newMember.guild);
-    channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
+    //channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
 
 });
 
