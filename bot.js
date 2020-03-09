@@ -121,7 +121,7 @@ client.on('message', async message => {
         //await connection.leave();
     }
 
-    message.delete(5000); // Delete commands from text channel after 5 secs
+    message.delete({ timeout: 10000 }); // Delete commands from text channel after 5 secs
 });
 
 function getRandomInt(min, max) {
@@ -167,7 +167,13 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
 
     const connection = await newUserChannel.join();
-    await connection.play('./audio/hg.ogg');
+    if(oldMember === null && newMember === null) {
+        await connection.play('./audio/sg.ogg');
+    }
+    else{
+        await connection.play('./audio/hg.ogg');
+    }
+    
 
     // Send message to the first channel the bot is allowed to send to
     console.log("newMember.guild.channels:", newMember.guild.channels);
