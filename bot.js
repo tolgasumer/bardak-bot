@@ -166,11 +166,11 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
 
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
 
-    const connection = await newUserChannel.join();
     if(oldMember === null && newMember === null) {
-        await connection.play('./audio/sg.ogg');
+        await connection.play('./audio/sg.ogg'); // sikinti
     }
     else{
+        const connection = await newUserChannel.join();
         await connection.play('./audio/hg.ogg');
     }
     
