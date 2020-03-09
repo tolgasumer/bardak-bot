@@ -144,10 +144,6 @@ async function baskinYap(voiceChannel) {
 }
 
 const getDefaultChannel = (guild) => {
-    // get "original" default channel
-    if (guild.channels.has(guild.id))
-        return guild.channels.get(guild.id)
-
     // Check for a "general" channel, which is often default chat
     const generalChannel = guild.channels.find(channel => channel.name === "general");
     if (generalChannel)
