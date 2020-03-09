@@ -145,7 +145,7 @@ async function baskinYap(voiceChannel) {
 
 const getDefaultChannel = (guild) => {
     // Check for a "general" channel, which is often default chat
-    const generalChannel = guild.channels.find(channel => channel.name === "general");
+    const generalChannel = guild.channels.cache.find(channel => channel.name === "general");
     if (generalChannel)
         return generalChannel;
     // Now we get into the heavy stuff: first channel in order where the bot can speak
@@ -168,7 +168,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     await connection.play('./audio/hg.ogg');
 
     // Send message to the first channel the bot is allowed to send to
-    const channel = getDefaultChannel(newMember.member.guild);
+    const channel = getDefaultChannel(newMember.guild);
     channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
 
 });
