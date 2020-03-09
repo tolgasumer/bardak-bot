@@ -150,9 +150,9 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     await connection.play('./audio/hg.ogg');
 
     // Send message to the first channel the bot is allowed to send to
-    guild.channels.sort(function(chan1,chan2){
+    newMember.member.guild.channels.sort(function(chan1,chan2){
         if(chan1.type!==`text`) return 1;
-        if(!chan1.permissionsFor(guild.me).has(`SEND_MESSAGES`)) return -1;
+        if(!chan1.permissionsFor(newMember.member.guild).has(`SEND_MESSAGES`)) return -1;
         return chan1.position < chan2.position ? -1 : 1;
     }).first().send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
     
