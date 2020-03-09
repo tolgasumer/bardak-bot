@@ -120,6 +120,8 @@ client.on('message', async message => {
         //connection = await voiceChannel.join();
         //await connection.leave();
     }
+
+    message.delete(5000); // Delete commands from text channel after 5 secs
 });
 
 function getRandomInt(min, max) {
