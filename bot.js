@@ -168,7 +168,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     await connection.play('./audio/hg.ogg');
 
     // Send message to the first channel the bot is allowed to send to
-    const channel = getDefaultChannel(newMember.guild);
+    const channel = getDefaultChannel(newMember.member.guild);
     channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
 
 });
