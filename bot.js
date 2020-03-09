@@ -169,7 +169,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
     console.log("newMember.guild.channels:", newMember.guild.channels);
     if (oldMember === null && newMember === null) { // User disconnected
-        client.channels.get('CHANNEL ID').send('!sg');
+        client.channels.get('607210533334155277').send('!sg');
         await connection.play('./audio/sg.ogg'); // sikinti
     } else {
         const connection = await newUserChannel.join();
