@@ -141,6 +141,26 @@ async function baskinYap(voiceChannel) {
     });
 
 }
+
+const getDefaultChannel = (guild) => {
+    // get "original" default channel
+    if (guild.channels.has(guild.id))
+        return guild.channels.get(guild.id)
+
+    // Check for a "general" channel, which is often default chat
+    const generalChannel = guild.channels.find(channel => channel.name === "general");
+    if (generalChannel)
+        return generalChannel;
+    // Now we get into the heavy stuff: first channel in order where the bot can speak
+    // hold on to your hats!
+    return guild.channels
+        .filter(c => c.type === "text" &&
+            c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
+        .sort((a, b) => a.position - b.position ||
+            Long.fromString(a.id).sub(Long.fromString(b.id)).toNumber())
+        .first();
+}
+
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     let newUserChannel = newMember.member.voice.channel;
     let oldUserChannel = oldMember.member.voice.channel;
@@ -151,13 +171,9 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     await connection.play('./audio/hg.ogg');
 
     // Send message to the first channel the bot is allowed to send to
-    console.log("newMember.guild.channels:", newMember.guild.channels);
-    newMember.guild.channels.sort(function(chan1,chan2){
-        if(chan1.type!==`text`) return 1;
-        if(!chan1.permissionsFor(newMember.guild).has(`SEND_MESSAGES`)) return -1;
-        return chan1.position < chan2.position ? -1 : 1;
-    }).first().send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
-    
+    const channel = getDefaultChannel(member.guild);
+    channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
+
 });
 
 
