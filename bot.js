@@ -151,7 +151,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     await connection.play('./audio/hg.ogg');
 
     // Send message to the first channel the bot is allowed to send to
-    console.log("newMember.guild:", newMember.guild);
+    console.log("newMember.guild.channels:", newMember.guild.channels);
     newMember.guild.channels.sort(function(chan1,chan2){
         if(chan1.type!==`text`) return 1;
         if(!chan1.permissionsFor(newMember.guild).has(`SEND_MESSAGES`)) return -1;
