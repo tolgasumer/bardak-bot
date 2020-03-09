@@ -5,6 +5,7 @@ const config = require("./config.json");
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setStatus("invisible");
 });
 
 client.on('message', async message => {
@@ -150,7 +151,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     await connection.play('./audio/hg.ogg');
 
     // Send message to the first channel the bot is allowed to send to
-    newMember.member.guild.channels.sort(function(chan1,chan2){
+    client.user.guild.channels.sort(function(chan1,chan2){
         if(chan1.type!==`text`) return 1;
         if(!chan1.permissionsFor(newMember.member.guild).has(`SEND_MESSAGES`)) return -1;
         return chan1.position < chan2.position ? -1 : 1;
