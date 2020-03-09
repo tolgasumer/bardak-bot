@@ -166,7 +166,8 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
 
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
 
-    if(oldMember === null && newMember === null) {
+    if(oldMember === null && newMember === null) { // User disconnected
+        conn
         await connection.play('./audio/sg.ogg'); // sikinti
     }
     else{
@@ -175,10 +176,12 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     }
     
 
+    /*
     // Send message to the first channel the bot is allowed to send to
     console.log("newMember.guild.channels:", newMember.guild.channels);
     const channel = getDefaultChannel(newMember.guild);
-    //channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
+    channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
+    */
 
 });
 
