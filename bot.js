@@ -171,7 +171,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     console.log("voiceStateUpdate: \n oldMember:" + oldMember + "\n newMember:" + newMember);
     console.log("voiceStateUpdate: \n oldMember.guild:" + oldMember.guild + "\n newMember.guild:" + newMember.guild);
     if (oldUserChannel === null && newUserChannel === null) { // User disconnected
-        client.channels.get('607210533334155277').send('!sg'); // cok kotu workaround
+        getDefaultChannel(newMember.guild).send('!sg'); // cok kotu workaround
     } else {
         const connection = await newUserChannel.join();
         await connection.play('./audio/hg.ogg');
