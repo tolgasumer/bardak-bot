@@ -167,8 +167,9 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
     let oldUserChannel = oldMember.member.voice.channel;
 
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
-    console.log("newMember.guild.channels:", newMember.guild.channels);
-    if (oldMember === null && newMember === null) { // User disconnected
+    //console.log("newMember.guild.channels:", newMember.guild.channels);
+    console.log("oldMember:" + oldMember + "\n newMember:" + newMember);
+    if (oldUserChannel === null && newUserChannel === null) { // User disconnected
         client.channels.get('607210533334155277').send('!sg'); // cok kotu workaround
     } else {
         const connection = await newUserChannel.join();
