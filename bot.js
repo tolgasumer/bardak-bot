@@ -97,6 +97,12 @@ client.on('message', async message => {
             await connection.play('./audio/soru.mp3');
         }
     }
+    if (command === "baki") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/bakisine.mp3');
+        }
+    }
     if (command === "uza") {
         //voiceChannel = await message.member.voice.channel;
         if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
