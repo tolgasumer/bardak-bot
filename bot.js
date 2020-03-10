@@ -27,6 +27,36 @@ client.on('message', async message => {
             await connection.play('./audio/sa.ogg');
         }
     }
+
+    // AUDIO
+    var audioCommands = [
+        "harman",
+        "alinir",
+        "zurna",
+        "anani",
+        "hg",
+        "mal",
+        "sg",
+        "adam",
+        "gg",
+        "ol",
+        "hava",
+        "?",
+        "baki",
+        "cinema",
+        "suda",
+        "tox",
+        "pick",
+        "sevgi",
+        "money",
+    ];
+    if(audioCommands.includes(command)) {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/' + command + '.mp3');
+        }
+    }
+    /*
     if (command === "harman") {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
@@ -141,6 +171,7 @@ client.on('message', async message => {
             await connection.play('./audio/money.mp3');
         }
     }
+    */
     if (command === "uza") {
         //voiceChannel = await message.member.voice.channel;
         if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
