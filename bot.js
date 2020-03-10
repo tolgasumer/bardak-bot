@@ -24,7 +24,7 @@ client.on('message', async message => {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
             message.channel.send('sa');
-            await connection.play('./audio/sa.ogg');
+            await connection.play('./audio/sa.mp3');
         }
     }
 
