@@ -111,6 +111,36 @@ client.on('message', async message => {
             await connection.play('./audio/cinema.mp3');
         }
     }
+    if (command === "suda") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/suda.mp3');
+        }
+    }
+    if (command === "tox") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/tox.mp3');
+        }
+    }
+    if (command === "pick") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/pick.mp3');
+        }
+    }
+    if (command === "sevgi") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/sevgi.mp3');
+        }
+    }
+    if (command === "money") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/money.mp3');
+        }
+    }
     if (command === "uza") {
         //voiceChannel = await message.member.voice.channel;
         if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
