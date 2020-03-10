@@ -133,7 +133,7 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
         getDefaultChannel(newMember.guild).send('!sg'); // cok kotu workaround
     } else {
         const connection = await newUserChannel.join();
-        await connection.play('./audio/hg.ogg');
+        await connection.play('./audio/hg.mp3');
     }
 
 
