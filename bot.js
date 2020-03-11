@@ -5,14 +5,14 @@ const config = require("./config.json");
 var Long = require("long");
 const fs = require('fs');
 
-client.on('ready', async () => {
+client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
 
-    setInterval(function () {
+    setInterval(async function () {
         client.guilds.cache.forEach(guild => {
             const message = await getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
             console.log("message:" + message);
