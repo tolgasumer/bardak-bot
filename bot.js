@@ -133,7 +133,7 @@ const sendSoz = function () {
     let jsonfile = fs.readFileSync('sozler.json');
     let parsedJson = JSON.parse(jsonfile);
 
-
+    client.voice.connections.map(voiceConnection => console.log(voiceConnection));
 
     client.guilds.cache.forEach(guild => {
         getDefaultChannel(guild).send("!...").then((msg) => {
@@ -149,15 +149,16 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     let newUserChannel = newVoiceState.member.voice.channel;
     let oldUserChannel = oldVoiceState.member.voice.channel;
 
+    /*
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
-    //console.log("newMember.guild.channels:", newMember.guild.channels);
     console.log("voiceStateUpdate: \n oldMember:" + oldVoiceState + "\n newMember:" + newVoiceState);
     console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
+    */
     if (oldUserChannel === null && newUserChannel === null) { // User disconnected
         getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
     } else {
         const connection = await newUserChannel.join();
-        await connection.play('./audio/hg.mp3');
+        await connection.play('./audio/hg_tts.mp3');
     }
 
 });
