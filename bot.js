@@ -3,12 +3,17 @@ const client = new Discord.Client();
 
 const config = require("./config.json");
 var Long = require("long");
+const fs = require('fs');
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
 
+
+    let jsonfile = fs.readFileSync('sozler.json');
+    let sozler = JSON.parse(jsonfile);
+    console.log(student);
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
             getDefaultChannel(guild).send('!?');
