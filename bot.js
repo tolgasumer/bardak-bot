@@ -71,6 +71,12 @@ client.on('message', async message => {
             await connection.play('./audio/soru.mp3');
         }
     }
+    if (command === "...") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            await connection.play('./audio/klavye.mp3');
+        }
+    }
 
 
     if (command === "uza") {
@@ -112,23 +118,16 @@ const sendSoz = function () {
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
 
+
+
     client.guilds.cache.forEach(guild => {
+        getDefaultChannel(guild).send("...");
         getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]).then((msg) => {
             console.log('first msg:', msg);
-            msg.delete({timeout: 30000});
-        });;
-        /*
-        message.then(message.delete({
-            timeout: 30000
-        })); // Delete commands from text channel after 30 secs);
-        
-        setTimeout(() => {
-            message.delete({
+            msg.delete({
                 timeout: 30000
-            }); // Delete commands from text channel after 30 secs
-        }, 10000);
-        */
-
+            });
+        });
     });
 };
 
