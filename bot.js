@@ -96,7 +96,7 @@ client.on('message', async message => {
 });
 
 
-const getDefaultChannel = (guild) => {
+const getDefaultChannel = async function (guild) {
     const generalChannel = guild.channels.cache.find(channel => channel.name === "general");
     if (generalChannel)
         return generalChannel;
