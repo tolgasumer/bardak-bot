@@ -30,7 +30,7 @@ client.on('message', async message => {
         }
     }
 
-    
+
     if (message.content.indexOf(config.prefix) !== 0) return; // ignore any message that does not start with our prefix
 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -151,7 +151,7 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     console.log("voiceStateUpdate: \n oldMember:" + oldVoiceState + "\n newMember:" + newVoiceState);
     console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
     if (oldUserChannel === null && newUserChannel === null) { // User disconnected
-        getDefaultChannel(newMember.guild).send('sıe'); // cok kotu workaround
+        getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
     } else {
         const connection = await newUserChannel.join();
         await connection.play('./audio/hg.mp3');
