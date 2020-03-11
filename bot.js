@@ -131,14 +131,14 @@ const getDefaultChannel = (guild) => {
 
 const sendSoz = function () {
     let jsonfile = fs.readFileSync('sozler.json');
-    let sozler = JSON.parse(jsonfile);
+    let parsedJson = JSON.parse(jsonfile);
 
 
 
     client.guilds.cache.forEach(guild => {
         getDefaultChannel(guild).send("!...").then((msg) => {
             setTimeout(() => {
-                msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {});
+                msg.edit(parsedJson.sozler[Math.floor(Math.random() * parsedJson.sozler.length)].text).then((editedMsg) => {});
             }, 7500);
         });
     });
