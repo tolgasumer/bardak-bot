@@ -45,7 +45,6 @@ client.on('message', async message => {
         "anani",
         "hg",
         "mal",
-        "sg",
         "adam",
         "gg",
         "ol",
@@ -75,6 +74,15 @@ client.on('message', async message => {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
             await connection.play('./audio/klavye.mp3');
+        }
+    }
+    if (command === "sg") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            var files = fs.readdirSync('./audio/sg/')
+            /* now files is an Array of the name of the files in the folder and you can pick a random name inside of that array */
+            let chosenFile = files[Math.floor(Math.random() * files.length)]
+            await connection.play(chosenFile);
         }
     }
 
@@ -123,8 +131,7 @@ const sendSoz = function () {
     client.guilds.cache.forEach(guild => {
         getDefaultChannel(guild).send("!...").then((msg) => {
             setTimeout(() => {
-                msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
-                });
+                msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {});
             }, 8500);
         });
     });
