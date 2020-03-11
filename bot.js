@@ -16,7 +16,7 @@ client.on('ready', () => {
     console.log(sozler);
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
-            getDefaultChannel(guild).send(Math.floor(Math.random() * sozler.length));
+            getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
         });
     }, 1 * 60000);
 
