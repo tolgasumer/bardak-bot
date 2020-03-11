@@ -113,7 +113,7 @@ async function sendSoz() {
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
 
-    client.guilds.cache.forEach(guild => {
+    client.guilds.cache.asyncForEach(guild => {
         defaultTextChannel = getDefaultChannel(guild);
         const message = await defaultTextChannel.send(sozler[Math.floor(Math.random() * sozler.length)]);
         console.log("message:" + message);
@@ -151,6 +151,12 @@ const clearAsyncInterval = (intervalIndex) => {
         asyncIntervals[intervalIndex] = false;
     }
 };
+
+async function asyncForEach(array, callback) {
+    for (let index = 0; index < array.length; index++) {
+      await callback(array[index], index, array);
+    }
+  }
 
 
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
