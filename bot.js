@@ -8,6 +8,9 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
+    client.guilds.forEach(guild => {
+        getDefaultChannel(guild).send('!sg');
+    });
     console.log(client.guilds);
     //setInterval(function(){ getDefaultChannel(.guild).send('!sg'); }, 3000);
 });
