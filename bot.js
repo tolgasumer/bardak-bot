@@ -13,7 +13,7 @@ client.on('ready', () => {
 
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
-    console.log(student);
+    console.log(sozler);
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
             getDefaultChannel(guild).send('!?');
