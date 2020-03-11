@@ -132,7 +132,7 @@ const sendSoz = function () {
         getDefaultChannel(guild).send("!...").then((msg) => {
             setTimeout(() => {
                 msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {});
-            }, 8500);
+            }, 7500);
         });
     });
 };
