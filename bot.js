@@ -28,6 +28,9 @@ client.on('message', async message => {
             let chosenFile = files[Math.floor(Math.random() * files.length)]
             await connection.play('./audio/sg/' + chosenFile);
         }
+        message.delete({
+            timeout: 30000
+        }); // Delete commands from text channel after 10 secs
     }
 
 
