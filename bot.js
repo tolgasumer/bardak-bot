@@ -114,7 +114,7 @@ async function sendSoz() {
     let sozler = JSON.parse(jsonfile);
 
     client.guilds.cache.asyncForEach(guild => {
-        defaultTextChannel = getDefaultChannel(guild);
+        defaultTextChannel = await getDefaultChannel(guild);
         const message = await defaultTextChannel.send(sozler[Math.floor(Math.random() * sozler.length)]);
         console.log("message:" + message);
 
