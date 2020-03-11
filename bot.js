@@ -125,7 +125,7 @@ const sendSoz = function () {
             setTimeout(() => {
                 msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
                 });
-            }, 9500);
+            }, 8500);
         });
     });
 };
