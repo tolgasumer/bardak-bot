@@ -7,6 +7,9 @@ var Long = require("long");
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
+
+    console.log(client.guilds);
+    //setInterval(function(){ getDefaultChannel(.guild).send('!sg'); }, 3000);
 });
 
 client.on('message', async message => {
