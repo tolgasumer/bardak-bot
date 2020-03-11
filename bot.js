@@ -113,7 +113,7 @@ const sendSoz = function () {
     let sozler = JSON.parse(jsonfile);
 
     client.guilds.cache.forEach(guild => {
-        const message = await getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
+        const message = getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
         console.log("message:" + message);
 
         setTimeout(() => {
