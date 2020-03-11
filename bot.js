@@ -112,14 +112,12 @@ const sendSoz = function () {
     let jsonfile = fs.readFileSync('sozler.json');
     let parsedJson = JSON.parse(jsonfile);
 
-    client.voice.connections.map(voiceConnection => console.log(voiceConnection));
-
     client.guilds.cache.forEach(guild => {
         client.voice.connections.forEach(connection => {
             connection.play('./audio/klavye.mp3');
         });
         setTimeout(() => {
-            msg.send(parsedJson.sozler[Math.floor(Math.random() * parsedJson.sozler.length)].text).then((sentMsg) => {
+            getDefaultChannel(guild).send(parsedJson.sozler[Math.floor(Math.random() * parsedJson.sozler.length)].text).then((sentMsg) => {
                 sentMsg.delete({
                     timeout: 30000
                 }); // Delete commands from text channel after 30 secs
