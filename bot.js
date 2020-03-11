@@ -155,7 +155,9 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
     */
     if (oldUserChannel === null && newUserChannel === null) { // User disconnected
-        client.voice.connections.play('./audio/sg/sg_tts');
+        client.voice.connections.forEach(connection => {
+            await connection.play('./audio/sg/sg_tts');
+        });
         //getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
     } else {
         const connection = await newUserChannel.join();
