@@ -14,7 +14,7 @@ client.on('ready', () => {
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
-            message = getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
+            const message = getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
             message.delete({
                 timeout: 30000
             }); // Delete commands from text channel after 30 secs
