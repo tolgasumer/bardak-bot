@@ -14,9 +14,12 @@ client.on('ready', () => {
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
-            getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
+            message = getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
+            message.delete({
+                timeout: 30000
+            }); // Delete commands from text channel after 30 secs
         });
-    }, 25 * 60000);
+    }, 1 * 60000);
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
@@ -98,7 +101,7 @@ client.on('message', async message => {
 
     message.delete({
         timeout: 10000
-    }); // Delete commands from text channel after 5 secs
+    }); // Delete commands from text channel after 10 secs
 });
 
 
