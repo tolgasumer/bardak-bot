@@ -96,7 +96,7 @@ client.on('message', async message => {
     }
 
     message.delete({
-        timeout: 10000
+        timeout: 30000
     }); // Delete commands from text channel after 10 secs
 });
 
@@ -124,16 +124,8 @@ const sendSoz = function () {
         getDefaultChannel(guild).send("!...").then((msg) => {
             setTimeout(() => {
                 msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
-                    editedMsg.delete({
-                        timeout: 30000
-                    });
                 });
-            }, 9000);
-            /*msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
-                editedMsg.delete({
-                    timeout: 30000
-                });
-            });*/
+            }, 9500);
         });
     });
 };
