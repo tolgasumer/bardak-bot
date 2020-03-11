@@ -122,11 +122,18 @@ const sendSoz = function () {
 
     client.guilds.cache.forEach(guild => {
         getDefaultChannel(guild).send("!...").then((msg) => {
-            msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
+            setTimeout(() => {
+                msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
+                    editedMsg.delete({
+                        timeout: 30000
+                    });
+                });
+            }, 5000);
+            /*msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
                 editedMsg.delete({
                     timeout: 30000
                 });
-            });
+            });*/
         });
     });
 };
