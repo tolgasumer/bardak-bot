@@ -5,24 +5,14 @@ const config = require("./config.json");
 var Long = require("long");
 const fs = require('fs');
 
-client.on('ready', async () => {
+client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
 
-    setInterval(async function () {
-        client.guilds.cache.forEach(guild => {
-            const message = await getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
-            console.log("message:" + message);
-            
-            message.delete({
-                timeout: 30000
-            }); // Delete commands from text channel after 30 secs
-            
-        });
-    }, 1 * 60000);
+    setInterval(sendSoz, 1 * 60000);
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
@@ -120,6 +110,19 @@ const getDefaultChannel = (guild) => {
             Long.fromString(a.id).sub(Long.fromString(b.id)).toNumber())
         .first();
 }
+
+async function sendSoz() {
+    client.guilds.cache.forEach(guild => {
+        const message = await getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
+        console.log("message:" + message);
+    
+        message.delete({
+            timeout: 30000
+        }); // Delete commands from text channel after 30 secs
+    
+    });
+}
+
 
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
     let newUserChannel = newMember.member.voice.channel;
