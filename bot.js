@@ -71,6 +71,12 @@ client.on('message', async message => {
             await connection.play('./audio/soru.mp3');
         }
     }
+    if (command === "konus") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            sendSoz();
+        }
+    }
 
 
     if (command === "uza") {
