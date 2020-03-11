@@ -124,11 +124,10 @@ const sendSoz = function () {
                     timeout: 30000
                 }); // Delete commands from text channel after 30 secs
             });
+            client.voice.connections.forEach(connection => {
+                connection.play(parsedJson.sozler[randomSozId].path);
+            });
         }, 7500);
-
-        client.voice.connections.forEach(connection => {
-            connection.play(parsedJson.sozler[randomSozId].path);
-        });
     });
 };
 
