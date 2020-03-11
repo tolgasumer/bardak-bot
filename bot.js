@@ -121,11 +121,11 @@ const sendSoz = function () {
 
 
     client.guilds.cache.forEach(guild => {
-        getDefaultChannel(guild).send("!...");
-        getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]).then((msg) => {
-            console.log('first msg:', msg);
-            msg.delete({
-                timeout: 30000
+        getDefaultChannel(guild).send("!...").then((msg) => {
+            msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
+                editedMsg.delete({
+                    timeout: 30000
+                });
             });
         });
     });
