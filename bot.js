@@ -113,13 +113,14 @@ const getDefaultChannel = (guild) => {
 
 async function sendSoz() {
     client.guilds.cache.forEach(guild => {
-        const message = await getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
+        defaultTextChannel = getDefaultChannel(guild);
+        const message = defaultTextChannel.send(sozler[Math.floor(Math.random() * sozler.length)]);
         console.log("message:" + message);
-    
+
         message.delete({
             timeout: 30000
         }); // Delete commands from text channel after 30 secs
-    
+
     });
 }
 
