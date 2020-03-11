@@ -11,9 +11,9 @@ client.on('ready', () => {
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
-            getDefaultChannel(guild).send('!sg');
+            getDefaultChannel(guild).send('!?');
         });
-    }, 3000);
+    }, 13 * 60000);
 });
 
 client.on('message', async message => {
