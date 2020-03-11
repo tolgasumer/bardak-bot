@@ -111,10 +111,10 @@ const getDefaultChannel = (guild) => {
 async function sendSoz() {
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
-    
+
     client.guilds.cache.forEach(guild => {
         defaultTextChannel = getDefaultChannel(guild);
-        const message = defaultTextChannel.send(sozler[Math.floor(Math.random() * sozler.length)]);
+        const message = await defaultTextChannel.send(sozler[Math.floor(Math.random() * sozler.length)]);
         console.log("message:" + message);
 
         message.delete({
