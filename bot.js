@@ -19,21 +19,6 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
-    // special case
-    if (message.content == "sıe") {
-        if (message.member.voice.channel) {
-            const connection = await message.member.voice.channel.join();
-            var files = fs.readdirSync('./audio/sg/')
-            /* now files is an Array of the name of the files in the folder and you can pick a random name inside of that array */
-            let chosenFile = files[Math.floor(Math.random() * files.length)]
-            await connection.play('./audio/sg/' + chosenFile);
-        }
-        message.delete({
-            timeout: 30000
-        }); // Delete commands from text channel after 10 secs
-    }
-
-
     if (message.content.indexOf(config.prefix) !== 0) return; // ignore any message that does not start with our prefix
 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -86,12 +71,6 @@ client.on('message', async message => {
             await connection.play('./audio/soru.mp3');
         }
     }
-    if (command === "...") {
-        if (message.member.voice.channel) {
-            const connection = await message.member.voice.channel.join();
-            await connection.play('./audio/klavye.mp3');
-        }
-    }
 
 
     if (command === "uza") {
@@ -136,11 +115,16 @@ const sendSoz = function () {
     client.voice.connections.map(voiceConnection => console.log(voiceConnection));
 
     client.guilds.cache.forEach(guild => {
-        getDefaultChannel(guild).send("!...").then((msg) => {
-            setTimeout(() => {
-                msg.edit(parsedJson.sozler[Math.floor(Math.random() * parsedJson.sozler.length)].text).then((editedMsg) => {});
-            }, 7500);
+        client.voice.connections.forEach(connection => {
+            connection.play('./audio/klavye.mp3');
         });
+        setTimeout(() => {
+            msg.send(parsedJson.sozler[Math.floor(Math.random() * parsedJson.sozler.length)].text).then((sentMsg) => {
+                sentMsg.delete({
+                    timeout: 30000
+                }); // Delete commands from text channel after 30 secs
+            });
+        }, 7500);
     });
 };
 
