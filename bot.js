@@ -9,8 +9,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
-    setAsyncInterval(sendSoz, 1000);
-    //setInterval(sendSoz, 1 * 60000);
+    setInterval(sendSoz, 1 * 60000);
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
@@ -96,7 +95,7 @@ client.on('message', async message => {
 });
 
 
-const getDefaultChannel = async function (guild) {
+const getDefaultChannel = (guild) => {
     const generalChannel = guild.channels.cache.find(channel => channel.name === "general");
     if (generalChannel)
         return generalChannel;
@@ -109,54 +108,22 @@ const getDefaultChannel = async function (guild) {
         .first();
 }
 
-const sendSoz = async function () {
+const sendSoz = function () {
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
 
-    client.guilds.cache.asyncForEach(guild => {
-        const defaultTextChannel = await getDefaultChannel(guild);
-        const message = await defaultTextChannel.send(sozler[Math.floor(Math.random() * sozler.length)]);
+    client.guilds.cache.forEach(guild => {
+        const message = await getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
         console.log("message:" + message);
 
-        message.delete({
-            timeout: 30000
-        }); // Delete commands from text channel after 30 secs
+        setTimeout(() => {
+            message.delete({
+                timeout: 30000
+            }); // Delete commands from text channel after 30 secs
+        }, 10000);
 
     });
-}
-
-// asyncIntervalController
-const asyncIntervals = [];
-
-const runAsyncInterval = async (cb, interval, intervalIndex) => {
-    await cb();
-    if (asyncIntervals[intervalIndex]) {
-        setTimeout(() => runAsyncInterval(cb, interval, intervalIndex), interval);
-    }
 };
-
-const setAsyncInterval = (cb, interval) => {
-    if (cb && typeof cb === "function") {
-        const intervalIndex = asyncIntervals.length;
-        asyncIntervals.push(true);
-        runAsyncInterval(cb, interval, intervalIndex);
-        return intervalIndex;
-    } else {
-        throw new Error('Callback must be a function');
-    }
-};
-
-const clearAsyncInterval = (intervalIndex) => {
-    if (asyncIntervals[intervalIndex]) {
-        asyncIntervals[intervalIndex] = false;
-    }
-};
-
-async function asyncForEach(array, callback) {
-    for (let index = 0; index < array.length; index++) {
-      await callback(array[index], index, array);
-    }
-  }
 
 
 client.on("voiceStateUpdate", async function (oldMember, newMember) {
