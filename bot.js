@@ -8,11 +8,12 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
-    client.guilds.cache.forEach(guild => {
-        getDefaultChannel(guild).send('!sg');
-    });
-    console.log(client.guilds);
-    //setInterval(function(){ getDefaultChannel(.guild).send('!sg'); }, 3000);
+
+    setInterval(function () {
+        client.guilds.cache.forEach(guild => {
+            getDefaultChannel(guild).send('!sg');
+        });
+    }, 3000);
 });
 
 client.on('message', async message => {
@@ -55,7 +56,7 @@ client.on('message', async message => {
         "sevgi",
         "money",
     ];
-    if(audioCommands.includes(command)) {
+    if (audioCommands.includes(command)) {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
             await connection.play('./audio/' + command + '.mp3');
@@ -69,7 +70,7 @@ client.on('message', async message => {
         }
     }
 
-    
+
     if (command === "uza") {
         //voiceChannel = await message.member.voice.channel;
         if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
