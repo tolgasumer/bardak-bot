@@ -109,7 +109,7 @@ const getDefaultChannel = (guild) => {
         .first();
 }
 
-async function sendSoz() {
+const sendSoz = async function () {
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
 
