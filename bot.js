@@ -5,7 +5,7 @@ const config = require("./config.json");
 var Long = require("long");
 const fs = require('fs');
 
-client.on('ready', () => {
+client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
