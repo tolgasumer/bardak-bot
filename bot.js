@@ -128,7 +128,7 @@ const sendSoz = function () {
                         timeout: 30000
                     });
                 });
-            }, 5000);
+            }, 8000);
             /*msg.edit(sozler[Math.floor(Math.random() * sozler.length)]).then((editedMsg) => {
                 editedMsg.delete({
                     timeout: 30000
