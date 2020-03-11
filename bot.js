@@ -7,9 +7,9 @@ const fs = require('fs');
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setStatus("invisible");
+    //client.user.setStatus("invisible");
 
-    setInterval(sendSoz, 1 * 60000);
+    setInterval(sendSoz, 30 * 60000); // sendSoz every 30mins
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
