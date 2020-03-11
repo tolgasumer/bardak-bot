@@ -82,7 +82,7 @@ client.on('message', async message => {
             var files = fs.readdirSync('./audio/sg/')
             /* now files is an Array of the name of the files in the folder and you can pick a random name inside of that array */
             let chosenFile = files[Math.floor(Math.random() * files.length)]
-            await connection.play(chosenFile);
+            await connection.play('./audio/sg/' + chosenFile);
         }
     }
 
