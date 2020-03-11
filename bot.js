@@ -121,7 +121,7 @@ const sendSoz = function () {
 
 
     client.guilds.cache.forEach(guild => {
-        getDefaultChannel(guild).send("...");
+        getDefaultChannel(guild).send("!...");
         getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]).then((msg) => {
             console.log('first msg:', msg);
             msg.delete({
