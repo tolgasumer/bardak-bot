@@ -13,12 +13,12 @@ client.on('ready', () => {
 
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
-    console.log(sozler);
+
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
             getDefaultChannel(guild).send(sozler[Math.floor(Math.random() * sozler.length)]);
         });
-    }, 1 * 60000);
+    }, 25 * 60000);
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
