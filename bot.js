@@ -116,13 +116,19 @@ const sendSoz = function () {
         client.voice.connections.forEach(connection => {
             connection.play('./audio/klavye.mp3');
         });
+
+        const randomSozId = Math.floor(Math.random() * parsedJson.sozler.length);
         setTimeout(() => {
-            getDefaultChannel(guild).send(parsedJson.sozler[Math.floor(Math.random() * parsedJson.sozler.length)].text).then((sentMsg) => {
+            getDefaultChannel(guild).send(parsedJson.sozler[randomSozId].text).then((sentMsg) => {
                 sentMsg.delete({
                     timeout: 30000
                 }); // Delete commands from text channel after 30 secs
             });
         }, 7500);
+
+        client.voice.connections.forEach(connection => {
+            connection.play(randomSozId.path);
+        });
     });
 };
 
