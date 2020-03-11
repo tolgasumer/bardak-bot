@@ -9,8 +9,6 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
-
-
     let jsonfile = fs.readFileSync('sozler.json');
     let sozler = JSON.parse(jsonfile);
 
@@ -103,34 +101,12 @@ client.on('message', async message => {
     }); // Delete commands from text channel after 5 secs
 });
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
-async function baskinYap(voiceChannel) {
-    connection = await voiceChannel.join();
-    let dispatcher = connection.play('./audio/bamboozle.ogg');
-    await dispatcher.on('end', async function () {
-        let dispatcher1 = connection.play('./audio/zurna.ogg');
-        await dispatcher1.on('end', async function () {
-            let dispatcher2 = connection.play('./audio/gul.ogg');
-            await dispatcher2.on('end', function () {
-                voiceChannel.leave();
-            });
-        });
-
-    });
-
-}
 
 const getDefaultChannel = (guild) => {
-    // Check for a "general" channel, which is often default chat
     const generalChannel = guild.channels.cache.find(channel => channel.name === "general");
     if (generalChannel)
         return generalChannel;
-    // Now we get into the heavy stuff: first channel in order where the bot can speak
-    // hold on to your hats!
+
     return guild.channels
         .filter(c => c.type === "text" &&
             c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
@@ -153,14 +129,6 @@ client.on("voiceStateUpdate", async function (oldMember, newMember) {
         const connection = await newUserChannel.join();
         await connection.play('./audio/hg.mp3');
     }
-
-
-    /*
-    // Send message to the first channel the bot is allowed to send to
-    console.log("newMember.guild.channels:", newMember.guild.channels);
-    const channel = getDefaultChannel(newMember.guild);
-    channel.send(`-p https://www.youtube.com/watch?v=3O_TfFsnJ8U`);
-    */
 
 });
 
