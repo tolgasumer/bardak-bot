@@ -19,6 +19,18 @@ client.on('ready', () => {
 });
 
 client.on('message', async message => {
+    // special case
+    if (message.content == "sıe") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            var files = fs.readdirSync('./audio/sg/')
+            /* now files is an Array of the name of the files in the folder and you can pick a random name inside of that array */
+            let chosenFile = files[Math.floor(Math.random() * files.length)]
+            await connection.play('./audio/sg/' + chosenFile);
+        }
+    }
+
+    
     if (message.content.indexOf(config.prefix) !== 0) return; // ignore any message that does not start with our prefix
 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -47,6 +59,7 @@ client.on('message', async message => {
         "mal",
         "adam",
         "gg",
+        "sg",
         "ol",
         "hava",
         "baki",
@@ -74,15 +87,6 @@ client.on('message', async message => {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
             await connection.play('./audio/klavye.mp3');
-        }
-    }
-    if (command === "sg") {
-        if (message.member.voice.channel) {
-            const connection = await message.member.voice.channel.join();
-            var files = fs.readdirSync('./audio/sg/')
-            /* now files is an Array of the name of the files in the folder and you can pick a random name inside of that array */
-            let chosenFile = files[Math.floor(Math.random() * files.length)]
-            await connection.play('./audio/sg/' + chosenFile);
         }
     }
 
@@ -138,16 +142,16 @@ const sendSoz = function () {
 };
 
 
-client.on("voiceStateUpdate", async function (oldMember, newMember) {
-    let newUserChannel = newMember.member.voice.channel;
-    let oldUserChannel = oldMember.member.voice.channel;
+client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
+    let newUserChannel = newVoiceState.member.voice.channel;
+    let oldUserChannel = oldVoiceState.member.voice.channel;
 
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
     //console.log("newMember.guild.channels:", newMember.guild.channels);
-    console.log("voiceStateUpdate: \n oldMember:" + oldMember + "\n newMember:" + newMember);
-    console.log("voiceStateUpdate: \n oldMember.guild:" + oldMember.guild + "\n newMember.guild:" + newMember.guild);
+    console.log("voiceStateUpdate: \n oldMember:" + oldVoiceState + "\n newMember:" + newVoiceState);
+    console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
     if (oldUserChannel === null && newUserChannel === null) { // User disconnected
-        getDefaultChannel(newMember.guild).send('!sg'); // cok kotu workaround
+        getDefaultChannel(newMember.guild).send('sıe'); // cok kotu workaround
     } else {
         const connection = await newUserChannel.join();
         await connection.play('./audio/hg.mp3');
