@@ -127,7 +127,7 @@ const sendSoz = function () {
         }, 7500);
 
         client.voice.connections.forEach(connection => {
-            connection.play(randomSozId.path);
+            connection.play(parsedJson.sozler[randomSozId].path);
         });
     });
 };
