@@ -151,8 +151,7 @@ const sendSoz = function (sozId) {
     });
 };
 
-const hg = function (userId) {
-};
+const hg = function (userId) {};
 
 
 client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
@@ -162,18 +161,19 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
     console.log("voiceStateUpdate: \n oldMember:" + oldVoiceState + "\n newMember:" + newVoiceState);
     console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
-    if (oldUserChannel === null && newUserChannel !== null) { // User Joins a voice channel
+
+    if (oldUserChannel === null && newUserChannel === null) { // User disconnected
+        client.voice.connections.forEach(connection => {
+            connection.play('./audio/sg/sg_tts.mp3');
+        });
+        //getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
+    } else if (oldUserChannel === null && newUserChannel !== null) { // User Joins a voice channel
         const connection = await newUserChannel.join();
         await connection.play('./audio/hg_tts.mp3');
 
         //hg test
         console.log("newVoiceState.member", newVoiceState.member);
 
-    } else if (oldUserChannel === null && newUserChannel === null) { // User disconnected
-        client.voice.connections.forEach(connection => {
-            connection.play('./audio/sg/sg_tts.mp3');
-        });
-        //getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
     }
 
 });
