@@ -166,7 +166,7 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
             connection.play('./audio/sg/sg_tts.mp3');
         });
         //getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
-    } else if (oldUserChannel === null && newUserChannel !== null) { // User Joins a voice channel
+    } else { // User Joins a voice channel
         const connection = await newUserChannel.join();
         await connection.play('./audio/hg_tts.mp3');
 
