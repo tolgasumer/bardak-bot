@@ -127,6 +127,7 @@ const sendSoz = function (sozId) {
             connection.play('./audio/klavye.mp3');
         });
         console.log("sozId:", sozId);
+        console.log("parsedJson.sozler.length", parsedJson.sozler.length);
         // Pick random if no arg
         if (Number.isInteger(sozId) && sozId < parsedJson.sozler.length) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
