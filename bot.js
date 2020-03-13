@@ -128,6 +128,8 @@ const sendSoz = function (sozId) {
         });
         console.log("sozId:", sozId);
         console.log("parsedJson.sozler.length", parsedJson.sozler.length);
+        console.log("Number.isInteger(sozId):", Number.isInteger(sozId));
+        console.log("parsedJson.sozler.length > sozId:", parsedJson.sozler.length > sozId);
         // Pick random if no arg
         if (Number.isInteger(sozId) && parsedJson.sozler.length > sozId) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
