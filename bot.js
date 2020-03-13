@@ -132,11 +132,10 @@ const sendSoz = function (sozId) {
         console.log("parsedJson.sozler.length > sozId:", parsedJson.sozler.length > sozId);
         // Pick random if no arg
         if(Number.isNaN(sozId)) {
-
-        }
-        if (!Number.isInteger(sozId) || parsedJson.sozler.length > sozId) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
-        } else { // ERROR
+        }
+        if (Number.isInteger(sozId) && parsedJson.sozler.length < sozId) {
+            // ERROR
             client.voice.connections.forEach(connection => {
                 connection.play('./audio/zurna.mp3');
             });
