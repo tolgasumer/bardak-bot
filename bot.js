@@ -104,7 +104,7 @@ client.on('message', async message => {
         let jsonfile = fs.readFileSync('sozler.json');
         let parsedJson = JSON.parse(jsonfile);
         const m = getDefaultChannel(message.guild).send("baKıLıoR ...");
-        const sozlerString = "";
+        let sozlerString = "";
         for (let i = 0; i < parsedJson.sozler.length; i++) {
             sozlerString += i + ": " +parsedJson.sozler[i].text;
         }
