@@ -186,6 +186,8 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
             await connection.play('./audio/hg/idris.mp3');
         } else if (newVoiceState.member.user.username == 'KRAUSKON') {
             await connection.play('./audio/hg/hamza.mp3');
+        } else if (newVoiceState.member.user.username == 'Atakan') {
+            await connection.play('./audio/hg/fiko.mp3');
         } else {
             if (!newVoiceState.member.user.bot) {
                 await connection.play('./audio/hg_tts.mp3');
