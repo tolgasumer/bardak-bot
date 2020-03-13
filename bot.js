@@ -22,9 +22,11 @@ client.on('message', async message => {
     if (message.content.indexOf(config.prefix) !== 0) return; // ignore any message that does not start with our prefix
 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    //const args = message.content.slice(prefix.length).split(' ');
     const command = args.shift().toLowerCase();
 
     console.log("command:" + command);
+    console.log("args:" + args);
     if (command === "ping") {
         const m = await message.channel.send("hallediliyor...");
         m.edit(`komut ayıkma sürem ${m.createdTimestamp - message.createdTimestamp}ms, servera pingim ${Math.round(client.ping)}ms`);
