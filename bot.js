@@ -134,7 +134,7 @@ const sendSoz = function (sozId) {
         if(Number.isNaN(sozId)) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
         }
-        if (Number.isInteger(sozId) && parsedJson.sozler.length < sozId) {
+        if (Number.isInteger(sozId) && parsedJson.sozler.length <= sozId) {
             // ERROR
             client.voice.connections.forEach(connection => {
                 connection.play('./audio/zurna.mp3');
