@@ -126,12 +126,45 @@ const sendSoz = function (sozId) {
         client.voice.connections.forEach(connection => {
             connection.play('./audio/klavye.mp3');
         });
+
+        // Pick random if no arg
+        if (Number.isNaN(sozId)) {
+            sozId = Math.floor(Math.random() * parsedJson.sozler.length);
+        }
+        if (Number.isInteger(sozId) && parsedJson.sozler.length <= sozId) {
+            // ERROR
+            client.voice.connections.forEach(connection => {
+                connection.play('./audio/zurna.mp3');
+            });
+            return;
+        }
+        setTimeout(() => {
+            getDefaultChannel(guild).send(parsedJson.sozler[sozId].text).then((sentMsg) => {
+                sentMsg.delete({
+                    timeout: 30000
+                }); // Delete commands from text channel after 30 secs
+            });
+            client.voice.connections.forEach(connection => {
+                connection.play(parsedJson.sozler[sozId].path);
+            });
+        }, 6400);
+    });
+};
+
+const hg = function (userId) {
+    let jsonfile = fs.readFileSync('sozler.json');
+    let parsedJson = JSON.parse(jsonfile);
+
+    client.guilds.cache.forEach(guild => {
+        client.voice.connections.forEach(connection => {
+            connection.play('./audio/klavye.mp3');
+        });
         console.log("sozId:", sozId);
         console.log("parsedJson.sozler.length", parsedJson.sozler.length);
         console.log("Number.isInteger(sozId):", Number.isInteger(sozId));
         console.log("parsedJson.sozler.length > sozId:", parsedJson.sozler.length > sozId);
         // Pick random if no arg
-        if(Number.isNaN(sozId)) {
+        if (Number.isNaN(sozId)) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
         }
         if (Number.isInteger(sozId) && parsedJson.sozler.length <= sozId) {
@@ -164,14 +197,18 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     console.log("voiceStateUpdate: \n oldMember:" + oldVoiceState + "\n newMember:" + newVoiceState);
     console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
     */
-    if (oldUserChannel === null && newUserChannel === null) { // User disconnected
+    if (oldUserChannel === undefined && newUserChannel !== undefined) { // User Joins a voice channel
+        const connection = await newUserChannel.join();
+        await connection.play('./audio/hg_tts.mp3');
+
+        //hg test
+        console.log("newVoiceState.member", newVoiceState.member);
+
+    } else if (oldUserChannel === null && newUserChannel === null) { // User disconnected
         client.voice.connections.forEach(connection => {
             connection.play('./audio/sg/sg_tts.mp3');
         });
         //getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
-    } else {
-        const connection = await newUserChannel.join();
-        await connection.play('./audio/hg_tts.mp3');
     }
 
 });
