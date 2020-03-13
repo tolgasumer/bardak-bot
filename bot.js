@@ -118,36 +118,33 @@ const getDefaultChannel = (guild) => {
 }
 
 const sendSoz = function (sozId) {
-    try {
-        let jsonfile = fs.readFileSync('sozler.json');
-        let parsedJson = JSON.parse(jsonfile);
+    let jsonfile = fs.readFileSync('sozler.json');
+    let parsedJson = JSON.parse(jsonfile);
 
-        client.guilds.cache.forEach(guild => {
-            client.voice.connections.forEach(connection => {
-                connection.play('./audio/klavye.mp3');
-            });
-            console.log("sozId:", sozId);
-            // Pick random if no arg
-            if (!sozId) {
-                sozId = Math.floor(Math.random() * parsedJson.sozler.length);
-            }
-            setTimeout(() => {
-                getDefaultChannel(guild).send(parsedJson.sozler[sozId].text).then((sentMsg) => {
-                    sentMsg.delete({
-                        timeout: 30000
-                    }); // Delete commands from text channel after 30 secs
-                });
-                client.voice.connections.forEach(connection => {
-                    connection.play(parsedJson.sozler[sozId].path);
-                });
-            }, 6400);
-        });
-    } catch (error) {
+    client.guilds.cache.forEach(guild => {
         client.voice.connections.forEach(connection => {
-            connection.play('./audio/zurna.mp3');
+            connection.play('./audio/klavye.mp3');
         });
-    }
-
+        console.log("sozId:", sozId);
+        // Pick random if no arg
+        if (Number.isInteger(sozId) && sozId < parsedJson.sozler.length) {
+            sozId = Math.floor(Math.random() * parsedJson.sozler.length);
+        } else {
+            client.voice.connections.forEach(connection => {
+                connection.play('./audio/zurna.mp3');
+            });
+        }
+        setTimeout(() => {
+            getDefaultChannel(guild).send(parsedJson.sozler[sozId].text).then((sentMsg) => {
+                sentMsg.delete({
+                    timeout: 30000
+                }); // Delete commands from text channel after 30 secs
+            });
+            client.voice.connections.forEach(connection => {
+                connection.play(parsedJson.sozler[sozId].path);
+            });
+        }, 6400);
+    });
 };
 
 
