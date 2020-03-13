@@ -122,6 +122,7 @@ const sendSoz = function (sozId) {
     let jsonfile = fs.readFileSync('sozler.json');
     let parsedJson = JSON.parse(jsonfile);
 
+    console.log("sozId:" + sozId);
     client.guilds.cache.forEach(guild => {
         client.voice.connections.forEach(connection => {
             connection.play('./audio/klavye.mp3');
