@@ -129,7 +129,7 @@ const sendSoz = function (sozId) {
         });
 
         // Pick random if no arg
-        if (Number.isNaN(sozId)) {
+        if (Number.isNaN(sozId) || sozId === undefined) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
         }
         if (Number.isInteger(sozId) && parsedJson.sozler.length <= sozId) {
