@@ -169,13 +169,15 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     } else { // User Joins a voice channel
         const connection = await newUserChannel.join();
         if (newVoiceState.member.user.username == 'Musti') {
-            await connection.play('./audio/hg/hg_tts.mp3');
+            await connection.play('./audio/hg/ihsan.mp3');
         }
         if (newVoiceState.member.user.username == 'darthling') {
             await connection.play('./audio/hg/semsi.mp3');
         }
          else {
-            await connection.play('./audio/hg_tts.mp3');
+             if(!newVoiceState.member.user.bot) {
+                await connection.play('./audio/hg_tts.mp3');
+             }     
         }
         
 
