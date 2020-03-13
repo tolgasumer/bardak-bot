@@ -106,7 +106,7 @@ client.on('message', async message => {
         const m = getDefaultChannel(message.guild).send("baKıLıoR ...");
         const sozlerString = "";
         for (let i = 0; i < parsedJson.sozler.length; i++) {
-            sozlerString += i + ": " +soz.text;
+            sozlerString += i + ": " +parsedJson.sozler[i].text;
         }
 
         m.edit(sozlerString);
