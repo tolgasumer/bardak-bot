@@ -130,10 +130,11 @@ const sendSoz = function (sozId) {
         // Pick random if no arg
         if (Number.isInteger(sozId) && sozId < parsedJson.sozler.length) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
-        } else {
+        } else { // ERROR
             client.voice.connections.forEach(connection => {
                 connection.play('./audio/zurna.mp3');
             });
+            return;
         }
         setTimeout(() => {
             getDefaultChannel(guild).send(parsedJson.sozler[sozId].text).then((sentMsg) => {
