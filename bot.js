@@ -174,6 +174,8 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
             await connection.play('./audio/hg/semsi.mp3');
         } else if (newVoiceState.member.user.username == 'darthling') {
             await connection.play('./audio/zurna.mp3');
+        } else if (newVoiceState.member.user.username == 'rebbyy') {
+            await connection.play('./audio/hg/baki.mp3');
         } else {
             if (!newVoiceState.member.user.bot) {
                 await connection.play('./audio/hg_tts.mp3');
