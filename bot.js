@@ -197,7 +197,7 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     console.log("voiceStateUpdate: \n oldMember:" + oldVoiceState + "\n newMember:" + newVoiceState);
     console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
     */
-    if (oldUserChannel === undefined && newUserChannel !== undefined) { // User Joins a voice channel
+    if (oldUserChannel === null && newUserChannel !== null) { // User Joins a voice channel
         const connection = await newUserChannel.join();
         await connection.play('./audio/hg_tts.mp3');
 
