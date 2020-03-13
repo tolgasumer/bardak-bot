@@ -158,9 +158,8 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     let newUserChannel = newVoiceState.member.voice.channel;
     let oldUserChannel = oldVoiceState.member.voice.channel;
 
+    console.log("voiceStateUpdate: \n oldVoiceState:" + oldVoiceState + "\n newVoiceState:" + newVoiceState);
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
-    console.log("voiceStateUpdate: \n oldMember:" + oldVoiceState + "\n newMember:" + newVoiceState);
-    console.log("voiceStateUpdate: \n oldMember.guild:" + oldVoiceState.guild + "\n newMember.guild:" + newVoiceState.guild);
 
     if (oldUserChannel === null && newUserChannel === null) { // User disconnected
         client.voice.connections.forEach(connection => {
