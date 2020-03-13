@@ -103,7 +103,7 @@ client.on('message', async message => {
     if (command === "sozler") {
         let jsonfile = fs.readFileSync('sozler.json');
         let parsedJson = JSON.parse(jsonfile);
-        getDefaultChannel(message.guild).send(parsedJson.sozler.text);
+        getDefaultChannel(message.guild).send(Object.values(parsedJson));
     }
 
     message.delete({
