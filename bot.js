@@ -77,7 +77,7 @@ client.on('message', async message => {
     if (command === "konus") {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
-            sendSoz();
+            sendSoz(parseInt(args));
         }
     }
 
@@ -117,7 +117,7 @@ const getDefaultChannel = (guild) => {
         .first();
 }
 
-const sendSoz = function () {
+const sendSoz = function (sozId) {
     let jsonfile = fs.readFileSync('sozler.json');
     let parsedJson = JSON.parse(jsonfile);
 
@@ -125,16 +125,19 @@ const sendSoz = function () {
         client.voice.connections.forEach(connection => {
             connection.play('./audio/klavye.mp3');
         });
-
-        const randomSozId = Math.floor(Math.random() * parsedJson.sozler.length);
+        console.log("sozId:", sozId);
+        // Pick random if no arg
+        if(!sozId) {
+            sozId = Math.floor(Math.random() * parsedJson.sozler.length);
+        }
         setTimeout(() => {
-            getDefaultChannel(guild).send(parsedJson.sozler[randomSozId].text).then((sentMsg) => {
+            getDefaultChannel(guild).send(parsedJson.sozler[sozId].text).then((sentMsg) => {
                 sentMsg.delete({
                     timeout: 30000
                 }); // Delete commands from text channel after 30 secs
             });
             client.voice.connections.forEach(connection => {
-                connection.play(parsedJson.sozler[randomSozId].path);
+                connection.play(parsedJson.sozler[sozId].path);
             });
         }, 6400);
     });
