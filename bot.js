@@ -131,7 +131,10 @@ const sendSoz = function (sozId) {
         console.log("Number.isInteger(sozId):", Number.isInteger(sozId));
         console.log("parsedJson.sozler.length > sozId:", parsedJson.sozler.length > sozId);
         // Pick random if no arg
-        if (Number.isInteger(sozId) && parsedJson.sozler.length > sozId) {
+        if(Number.isNaN(sozId)) {
+
+        }
+        if (!Number.isInteger(sozId) || parsedJson.sozler.length > sozId) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
         } else { // ERROR
             client.voice.connections.forEach(connection => {
