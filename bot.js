@@ -129,7 +129,7 @@ const sendSoz = function (sozId) {
         console.log("sozId:", sozId);
         console.log("parsedJson.sozler.length", parsedJson.sozler.length);
         // Pick random if no arg
-        if (Number.isInteger(sozId) && sozId < parsedJson.sozler.length) {
+        if (Number.isInteger(sozId) && parsedJson.sozler.length > sozId) {
             sozId = Math.floor(Math.random() * parsedJson.sozler.length);
         } else { // ERROR
             client.voice.connections.forEach(connection => {
