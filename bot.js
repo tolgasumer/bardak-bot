@@ -99,6 +99,13 @@ client.on('message', async message => {
         //await connection.leave();
     }
 
+    // Help commands
+    if (command === "sozler") {
+        let jsonfile = fs.readFileSync('sozler.json');
+        let parsedJson = JSON.parse(jsonfile);
+        getDefaultChannel(message.guild).send(parsedJson.sozler);
+    }
+
     message.delete({
         timeout: 30000
     }); // Delete commands from text channel after 10 secs
