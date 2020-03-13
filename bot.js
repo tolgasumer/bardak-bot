@@ -9,7 +9,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
-    setInterval(sendSoz, 1 * 60000); // sendSoz every 30mins
+    setInterval(sendSoz, 25 * 60000); // sendSoz every 25mins
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
