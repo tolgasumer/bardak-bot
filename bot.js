@@ -107,7 +107,7 @@ client.on('message', async message => {
         const m = await getDefaultChannel(message.guild).send("baKıLıoR ...");
         let sozlerString = "";
         for (let i = 0; i < parsedJson.sozler.length; i++) {
-            sozlerString += "\n" + i + ": " +parsedJson.sozler[i].text;
+            sozlerString += "\n" + i + ": " + parsedJson.sozler[i].text;
         }
 
         m.edit(sozlerString);
@@ -205,6 +205,9 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
             await connection.play('./audio/hg/fiko.mp3');
         } else if (newVoiceState.member.user.username == 'MiyaW') {
             await connection.play('./audio/cinema.mp3');
+        } else if (newVoiceState.member.user.username == 'Voidwalker') {
+            await connection.play('./audio/cp.mp3');
+
         } else {
             if (!newVoiceState.member.user.bot) {
                 await connection.play('./audio/hg_tts.mp3');
