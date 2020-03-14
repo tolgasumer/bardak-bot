@@ -4,6 +4,7 @@ const client = new Discord.Client();
 const config = require("./config.json");
 var Long = require("long");
 const fs = require('fs');
+const ytdl = require('ytdl-core');
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -112,6 +113,17 @@ client.on('message', async message => {
 
         m.edit(sozlerString);
     }
+
+    // Youtube
+    if (command === "cal") {
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            connection.play(ytdl(args, {
+                filter: 'audioonly'
+            }));
+        }
+    }
+
 
     message.delete({
         timeout: 30000
