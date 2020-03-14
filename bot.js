@@ -61,6 +61,7 @@ client.on('message', async message => {
         "sevgi",
         "money",
         "semsi",
+        "cp",
     ];
     if (audioCommands.includes(command)) {
         if (message.member.voice.channel) {
