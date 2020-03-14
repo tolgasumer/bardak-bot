@@ -118,7 +118,7 @@ client.on('message', async message => {
     if (command === "cal") {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
-            connection.play(ytdl(args, {
+            await connection.play(ytdl(args, {
                 filter: 'audioonly'
             }));
         }
