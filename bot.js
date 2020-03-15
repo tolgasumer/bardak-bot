@@ -114,6 +114,9 @@ client.on('message', async message => {
 
         m.edit(sozlerString);
     }
+    if (command === "sesler") {
+        await message.channel.send(audioCommands.toString());
+    }
 
     // Youtube
     if (command === "cal") {
