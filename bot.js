@@ -37,6 +37,7 @@ client.on('message', async message => {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
             message.channel.send('sa');
+            scrollingText(message);
             await connection.play('./audio/sa.mp3');
         }
     }
@@ -178,7 +179,13 @@ const sendSoz = function (sozId) {
     });
 };
 
-const hg = function (userId) {};
+const scrollingText = function (message) {
+    setInterval(() => {
+        if(message) {
+            message.edit(" " + message.content);
+        }
+    }, 500);
+};
 
 
 client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
