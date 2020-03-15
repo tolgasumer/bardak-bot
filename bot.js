@@ -37,7 +37,7 @@ client.on('message', async message => {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
             let response = await message.channel.send('sa');
-            scrollingText(response);
+            //scrollingText(response);
             await connection.play('./audio/sa.mp3');
         }
     }
