@@ -182,7 +182,7 @@ const sendSoz = function (sozId) {
 const scrollingText = function (message) {
     setInterval(() => {
         if(message) {
-            message.edit(" " + message.content);
+            message.edit("." + message.content);
         }
     }, 500);
 };
