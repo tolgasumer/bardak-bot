@@ -36,7 +36,7 @@ client.on('message', async message => {
     if (command === "gel") {
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
-            let response = message.channel.send('sa');
+            let response = await message.channel.send('sa');
             scrollingText(response);
             await connection.play('./audio/sa.mp3');
         }
