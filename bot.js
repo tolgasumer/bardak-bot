@@ -141,7 +141,7 @@ const getDefaultChannel = (guild) => {
     if (generalChannel)
         return generalChannel;
 
-    return guild.channels
+    return guild.channels.cache
         .filter(c => c.type === "text" &&
             c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
         .sort((a, b) => a.position - b.position ||
