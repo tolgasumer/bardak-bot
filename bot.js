@@ -10,13 +10,13 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
-    setInterval(sendSoz, 25 * 60000); // sendSoz every 25mins
+    setInterval(sendSoz, 55 * 60000); // sendSoz every 25mins
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
             getDefaultChannel(guild).send('!?');
         });
-    }, 13 * 60000);
+    }, 15 * 60000);
 });
 
 client.on('message', async message => {
