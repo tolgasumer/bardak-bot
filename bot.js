@@ -136,6 +136,7 @@ client.on('message', async message => {
 
 
 const getDefaultChannel = (guild) => {
+    console.log("guild.channels.cache:" + guild.channels.cache);
     const generalChannel = guild.channels.cache.find(channel => channel.name === "general");
     if (generalChannel)
         return generalChannel;
@@ -238,7 +239,7 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
 
 
         //hg test
-        console.log("newVoiceState.member", newVoiceState.member);
+        //console.log("newVoiceState.member", newVoiceState.member);
 
     }
 
