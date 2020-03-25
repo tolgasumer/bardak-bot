@@ -10,7 +10,8 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setStatus("invisible");
 
-    setInterval(sendSoz, 55 * 60000); // sendSoz every 25mins
+    setInterval(sendSoz, 55 * 60000); // sendSoz every 55mins
+    setInterval(covidAnons, 1 * 60000); // sendSoz every 25mins
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
@@ -192,6 +193,14 @@ const scrollingText = function (message) {
             message.edit("." + message.content);
         }
     }, 500);
+};
+
+const covidAnons = function () {
+    client.guilds.cache.forEach(guild => {
+        client.voice.connections.forEach(connection => {
+            connection.play('./audio/covidanons.mp3');
+        });
+    });
 };
 
 
