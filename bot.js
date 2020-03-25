@@ -11,7 +11,7 @@ client.on('ready', () => {
     client.user.setStatus("invisible");
 
     setInterval(sendSoz, 55 * 60000); // sendSoz every 55mins
-    setInterval(covidAnons, 1 * 60000); // sendSoz every 25mins
+    setInterval(covidAnons, 60 * 60000); // covidAnons every 60mins
 
     setInterval(function () {
         client.guilds.cache.forEach(guild => {
