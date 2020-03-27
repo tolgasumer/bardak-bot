@@ -17,7 +17,7 @@ client.on('ready', () => {
         client.guilds.cache.forEach(guild => {
             getDefaultChannel(guild).send('!?');
         });
-    }, 15 * 60000);
+    }, 23 * 60000);
 });
 
 client.on('message', async message => {
