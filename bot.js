@@ -69,6 +69,7 @@ client.on('message', async message => {
         "ow",
         "faceit",
         "covidanons",
+        "kapi",
     ];
     if (audioCommands.includes(command)) {
         if (message.member.voice.channel) {
