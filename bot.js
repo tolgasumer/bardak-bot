@@ -216,52 +216,52 @@ client.on("voiceStateUpdate", async function (oldVoiceState, newVoiceState) {
     console.log("voiceStateUpdate: \n oldVoiceState:" + oldVoiceState + "\n newVoiceState:" + newVoiceState);
     console.log("voiceStateUpdate: \n newUserChannel:" + newUserChannel + "\n oldUserChannel:" + oldUserChannel);
 
-    if (oldUserChannel != newUserChannel) {
-        if (oldUserChannel === null && newUserChannel === null) { // User disconnected
-            client.voice.connections.forEach(connection => {
-                connection.play('./audio/sg/sg_tts.mp3');
-            });
-            //getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
-        } else { // User Joins a voice channel
-            if (!newVoiceState.member.voice.selfMute) { // If the stateUpdate isn't a mute/unmute action
-                const connection = await newUserChannel.join();
-                if (newVoiceState.member.user.username == 'Musti') {
-                    await connection.play('./audio/hg/ihsan.mp3');
-                } else if (newVoiceState.member.user.username == 'englourious') {
-                    await connection.play('./audio/hg/semsi.mp3');
-                } else if (newVoiceState.member.user.username == 'darthling') {
-                    await connection.play('./audio/zurna.mp3');
-                } else if (newVoiceState.member.user.username == 'rebbyy') {
-                    await connection.play('./audio/hg/baki.mp3');
-                } else if (newVoiceState.member.user.username == 'Sina') {
-                    await connection.play('./audio/hg/sina.mp3');
-                } else if (newVoiceState.member.user.username == 'ThukydeS') {
-                    await connection.play('./audio/hg/thukydes.mp3');
-                } else if (newVoiceState.member.user.username == 'kerem') {
-                    await connection.play('./audio/hg/muhsin.mp3');
-                } else if (newVoiceState.member.user.username == 'ıDRıS') {
-                    await connection.play('./audio/hg/idris.mp3');
-                } else if (newVoiceState.member.user.username == 'KRAUSKON') {
-                    await connection.play('./audio/hg/hamza.mp3');
-                } else if (newVoiceState.member.user.username == 'Atakan') {
-                    await connection.play('./audio/hg/fiko.mp3');
-                } else if (newVoiceState.member.user.username == 'MiyaW') {
-                    await connection.play('./audio/cinema.mp3');
-                } else if (newVoiceState.member.user.username == 'Voidwalker') {
-                    await connection.play('./audio/cp.mp3');
-    
-                } else {
-                    if (!newVoiceState.member.user.bot) {
-                        await connection.play('./audio/hg_tts.mp3');
-                    }
+    if (oldUserChannel === null && newUserChannel === null) { // User disconnected
+        client.voice.connections.forEach(connection => {
+            connection.play('./audio/sg/sg_tts.mp3');
+        });
+        //getDefaultChannel(oldVoiceState.guild).send('sıe'); // cok kotu workaround
+    } else { // User Joins a voice channel
+        if (!newVoiceState.member.voice.selfMute) { // If the stateUpdate isn't a mute/unmute action
+            const connection = await newUserChannel.join();
+            if (newVoiceState.member.user.username == 'Musti') {
+                await connection.play('./audio/hg/ihsan.mp3');
+            } else if (newVoiceState.member.user.username == 'englourious') {
+                await connection.play('./audio/hg/semsi.mp3');
+            } else if (newVoiceState.member.user.username == 'darthling') {
+                await connection.play('./audio/zurna.mp3');
+            } else if (newVoiceState.member.user.username == 'rebbyy') {
+                await connection.play('./audio/hg/baki.mp3');
+            } else if (newVoiceState.member.user.username == 'Sina') {
+                await connection.play('./audio/hg/sina.mp3');
+            } else if (newVoiceState.member.user.username == 'ThukydeS') {
+                await connection.play('./audio/hg/thukydes.mp3');
+            } else if (newVoiceState.member.user.username == 'kerem') {
+                await connection.play('./audio/hg/muhsin.mp3');
+            } else if (newVoiceState.member.user.username == 'ıDRıS') {
+                await connection.play('./audio/hg/idris.mp3');
+            } else if (newVoiceState.member.user.username == 'KRAUSKON') {
+                await connection.play('./audio/hg/hamza.mp3');
+            } else if (newVoiceState.member.user.username == 'Atakan') {
+                await connection.play('./audio/hg/fiko.mp3');
+            } else if (newVoiceState.member.user.username == 'MiyaW') {
+                await connection.play('./audio/cinema.mp3');
+            } else if (newVoiceState.member.user.username == 'Voidwalker') {
+                await connection.play('./audio/cp.mp3');
+
+            } else {
+                if (!newVoiceState.member.user.bot) {
+                    await connection.play('./audio/hg_tts.mp3');
                 }
-            }    
-            //hg test
-            //console.log("newVoiceState.member", newVoiceState.member);
-    
+            }
         }
+
+
+
+        //hg test
+        //console.log("newVoiceState.member", newVoiceState.member);
+
     }
-    
 
 });
 
