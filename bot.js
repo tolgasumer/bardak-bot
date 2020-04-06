@@ -8,13 +8,8 @@ const ytdl = require('ytdl-core');
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setPresence({
-        game: { 
-            name: 'oYunYöNetıCısı - conter strıek 1.5',
-            type: '4'
-        },
-        status: 'online'
-    })
+    client.user.setStatus("online");
+    client.user.setActivity("oYunYöNetıCısı - conter strıek 1.5", { type: "PLAYING"})
 
     setInterval(sendSoz, 55 * 60000); // sendSoz every 55mins
     setInterval(covidAnons, 60 * 60000); // covidAnons every 60mins
