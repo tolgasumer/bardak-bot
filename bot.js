@@ -11,7 +11,7 @@ client.on('ready', () => {
     client.user.setPresence({
         game: { 
             name: 'oYunYöNetıCısı - conter strıek 1.5',
-            type: 'PLAYING'
+            type: '4'
         },
         status: 'idle'
     })
