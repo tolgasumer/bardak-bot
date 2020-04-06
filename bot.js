@@ -13,7 +13,7 @@ client.on('ready', () => {
             name: 'oYunYöNetıCısı - conter strıek 1.5',
             type: '4'
         },
-        status: 'idle'
+        status: 'online'
     })
 
     setInterval(sendSoz, 55 * 60000); // sendSoz every 55mins
