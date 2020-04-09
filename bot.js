@@ -143,7 +143,7 @@ client.on('message', async message => {
     // generateMeme
     if (command === "monte") {
         result = await generateMeme(args[0]);
-        const attachment = new MessageAttachment(result);
+        const attachment = new Discord.MessageAttachment(result);
         sentMsg = await message.channel.send(attachment);
         //sentMsg = await message.channel.send(result);
         sentMsg.delete({
