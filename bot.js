@@ -143,7 +143,7 @@ client.on('message', async message => {
     // generateMeme
     if (command === "monte") {
         result = await generateMeme(args[0]);
-        sentMsg = await message.channel.send({
+        sentMsg = await message.channel.send('.', {
             file: result // Or replace with FileOptions object
         });
 
