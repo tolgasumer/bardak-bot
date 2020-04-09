@@ -234,13 +234,16 @@ const generateMeme = async function (message) {
         }
       }
       
+      result = await axios.post('https://api.imgflip.com/caption_image', qs.stringify(requestBody), config);
+      return result;
+      /*
       axios.post('https://api.imgflip.com/caption_image', qs.stringify(requestBody), config)
         .then((result) => {
           return result.data.url;
         })
         .catch((err) => {
           return err;
-        })
+        })*/
 };
 
 
