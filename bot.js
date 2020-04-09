@@ -5,6 +5,8 @@ const config = require("./config.json");
 var Long = require("long");
 const fs = require('fs');
 const ytdl = require('ytdl-core');
+const axios = require('axios')
+const qs = require('querystring')
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -138,6 +140,15 @@ client.on('message', async message => {
         }
     }
 
+    // generateMeme
+    if (command === "monte") {
+        result = await generateMeme(args[0]);
+        message.channel.send({
+            file: result // Or replace with FileOptions object
+        });
+        message.channel.send(result);
+    }
+
 
     message.delete({
         timeout: 30000
@@ -206,6 +217,30 @@ const covidAnons = function () {
             connection.play('./audio/covidanons.mp3');
         });
     });
+};
+
+const generateMeme = async function (message) {
+    const requestBody = {
+        username: process.env.IMGFLIP_USERNAME,
+        password: process.env.IMGFLIP_PASSWORD,
+        text0: '',
+        text1: message,
+        template_id: '235198879',
+      }
+      
+      const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+      
+      axios.post(url, qs.stringify(requestBody), config)
+        .then((result) => {
+          return result.data.url;
+        })
+        .catch((err) => {
+          return err;
+        })
 };
 
 
