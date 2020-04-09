@@ -143,10 +143,10 @@ client.on('message', async message => {
     // generateMeme
     if (command === "monte") {
         result = await generateMeme(args[0]);
-        sentMsg = message.channel.send({
+        sentMsg = await message.channel.send({
             file: result // Or replace with FileOptions object
         });
-        
+
         sentMsg.delete({
             timeout: 30000
         }); // Delete sentMsg from text channel after 30 secs
