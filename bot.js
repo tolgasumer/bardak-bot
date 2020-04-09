@@ -235,8 +235,8 @@ const generateMeme = async function (message) {
       }
       
       result = await axios.post('https://api.imgflip.com/caption_image', qs.stringify(requestBody), config);
-      console.log("generateMeme():", result);
-      return result;
+      console.log("generateMeme():", result.data.data.url);
+      return result.data.data.url;
       /*
       axios.post('https://api.imgflip.com/caption_image', qs.stringify(requestBody), config)
         .then((result) => {
