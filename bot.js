@@ -104,8 +104,8 @@ client.on('message', async message => {
         if (message.guild.me.voice.channel.id === message.member.voice.channel.id) {
             const connection = await message.member.voice.channel.join();
             let dispatcher = connection.play('./audio/gul.mp3');
-            await dispatcher.on('end', function () {
-                message.member.voice.channel.leave();
+            dispatcher.on('end', function () {
+                connection._disconnect();
             });
             //await message.member.voiceChannel.leave();
         } else {
