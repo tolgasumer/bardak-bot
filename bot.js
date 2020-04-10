@@ -105,7 +105,7 @@ client.on('message', async message => {
             const connection = await message.member.voice.channel.join();
             let dispatcher = connection.play('./audio/gul.mp3');
             dispatcher.on('end', function () {
-                connection._disconnect();
+                connection.disconnect();
             });
             //await message.member.voiceChannel.leave();
         } else {
