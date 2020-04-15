@@ -204,7 +204,7 @@ const sendSoz = function (sozId) {
             client.voice.connections.forEach(connection => {
                 connection.play(parsedJson.sozler[sozId].path);
             });
-        }, 6400);
+        }, 7000);
     });
 };
 
