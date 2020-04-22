@@ -79,6 +79,7 @@ client.on('message', async message => {
         "sanat",
         "lowhp",
         "maymun",
+        "kapi2",
     ];
     if (audioCommands.includes(command)) {
         if (message.member.voice.channel) {
