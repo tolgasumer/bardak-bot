@@ -80,6 +80,8 @@ client.on('message', async message => {
         "lowhp",
         "maymun",
         "kapi2",
+        "yan",
+        "yan2",
     ];
     if (audioCommands.includes(command)) {
         if (message.member.voice.channel) {
