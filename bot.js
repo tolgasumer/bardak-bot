@@ -82,6 +82,7 @@ client.on('message', async message => {
         "kapi2",
         "yan",
         "yan2",
+        "cureshot",
     ];
     if (audioCommands.includes(command)) {
         if (message.member.voice.channel) {
